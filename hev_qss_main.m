@@ -1,7 +1,5 @@
 %% Seminar Electromobility--Dynamic Programming (only for NEDC)
 % Krunalkumar Zadafiya - 415657
-% Aditya Sunil Suryawanshi - 415776
-% Mohammed Nawaz Shaikh - 416124 
 
 %% Dynamic programming ~ NEDC(New European Driving Cycle)
 tic;
@@ -14,7 +12,7 @@ grd.Nx{1}    = 101;         % Number of discrete value for SOC
 grd.Xn{1}.hi = 0.95;        % SOC upper limit
 grd.Xn{1}.lo = 0.15;        % SOC lower limit
 
-grd.Nu{1}    = 20001;       % Number of discrete value for split ratio
+grd.Nu{1}    = 2001;       % Number of discrete value for split ratio
 grd.Un{1}.hi = 1;           % Split-ratio upper limit
 grd.Un{1}.lo = -1;          % Split-ratio lower limit
 
@@ -37,7 +35,7 @@ prb.N  = 1220*1/prb.Ts + 1; %Cycle size
 
 % set options
 options = dpm();
-options.MyInf = 1e1;
+options.MyInf = 1e3;
 options.BoundaryMethod = 'Line';    % boundary condition 'Line'.
 if strcmp(options.BoundaryMethod,'Line') 
     %these options are only needed if 'Line' is used
