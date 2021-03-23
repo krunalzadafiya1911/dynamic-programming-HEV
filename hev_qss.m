@@ -66,17 +66,17 @@ Ttot_in = Ttot;
 % Assigning it randomly.
 
 m=101;              %grd.Nx{1}...Do not change.
-n=20001;            %grd.Nu{1}...Do not change.
+n=2001;            %grd.Nu{1}...Do not change. converged from intialized data
 
 % Problem: Calculating data from the simulink takes too much time (around 1 to 2 days).
-% Result: Our try was also to reduce it. We reduce it upto 3 hours.
+% Result: My try is also to reduce it. I reduced it upto 3 hours.
 % Aim of Strategy: 1) Minimize the number of calls to torque_split.mdl 2) while
 % backward calulation, below given condition helps to reduce the time by
 % large difference.
 
 if (size(u1,1)~=1)
     % It executes only for backward calulation, and reduce the number
-    %of call to simulink.
+    %of calls to simulink.
 
 % Controller
     % inputs for simulink file 
@@ -125,7 +125,7 @@ else
     %This will be executed for checking Boundary conditions and Forward
     %propogation
     
-    %Here, the inputs are in the shape of 1*m, so the redcution of 
+    %Here, the inputs are in the shape of 1*m, so the reduction of 
     %execution-time is not possible. Here, reshape command is not involved
 
 % Controller
@@ -175,7 +175,7 @@ X{1} = (conj(X{1})+X{1})/2;
 C{1}  = Pe_out;
 
 if numel(find(I==0))==0
-    %condition check for infeasible system.
+    % This condition checks for infeasible system.
     keyboard
 end
 
@@ -183,3 +183,6 @@ end
 out.Te = Te_out;
 out.Tm = Tm_out;
 end
+
+%Last change done on 23.03.2021  
+%done by Krunalkumar Zadafiya
